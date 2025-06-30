@@ -9,7 +9,7 @@ const poemsData = [
   {
     id: "poem2",
     title: "संध्याकाळ",
-    date: "July 1, 2025",
+    date: "इथे प्रस्तावना लिहू शकतो",
     language: "marathi",
     content: "आभाळ रंगले तांबूस,<br>मन झाले शांत, संथ, गंभीर..."
   },
