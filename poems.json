@@ -1,0 +1,20 @@
+[
+  {
+    "id": "poem1",
+    "title": "The Whispering Wind",
+    "date": "June 29, 2025",
+    "content": "The wind whispered secrets through the trees,<br>Of quiet hopes and midnight dreams..."
+  },
+  {
+    "id": "poem2",
+    "title": "Stardust",
+    "date": "June 28, 2025",
+    "content": "We are made of stardust, they say,<br>Tiny sparks lighting up the day..."
+  },
+  {
+    "id": "poem3",
+    "title": "Raindrops",
+    "date": "July 1, 2025",
+    "content": "Raindrops fall like whispered songs,<br>Dancing gently where the heart belongs..."
+  }
+]
