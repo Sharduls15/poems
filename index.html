@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Poetry Blog</title>
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather&family=Playfair+Display&display=swap" rel="stylesheet">
+  <title>My Poet</title>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&family=Playfair+Display&family=Noto+Sans+Devanagari&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     :root {
@@ -34,6 +34,11 @@
       padding: 0;
       color: var(--text-color);
       transition: background 0.4s, color 0.4s;
+    }
+    .marathi {
+      font-family: 'Sanskrit Text', 'Noto Sans Devanagari', 'Hind', sans-serif;
+      font-size: 1.2rem;
+      line-height: 1.8;
     }
     header {
       background: var(--header-bg);
@@ -193,7 +198,7 @@
 <body>
   <header>
     <h1>मर्मबंध</h1>
-    <p>Thoughts in Verse by [Your Name]</p>
+    <p>शार्दूल धांदरफळे</p>
   </header>
 
   <button class="open-sidebar-btn" onclick="toggleSidebar()">☰ Poems</button>
@@ -208,27 +213,12 @@
 
   <div class="sidebar" id="sidebar">
     <input type="text" class="search-bar" id="searchInput" placeholder="Search poems..." onkeyup="filterPoems()">
-    <ul class="poem-list" id="poemList">
-      <li><a href="#" onclick="showPoem('poem1')">The Whispering Wind</a></li>
-      <li><a href="#" onclick="showPoem('poem2')">Stardust</a></li>
-    </ul>
+    <ul class="poem-list" id="poemList"></ul>
     <button class="toggle-button" onclick="toggleDarkMode()">Toggle Dark Mode</button>
   </div>
 
   <div class="main-layout">
-    <div class="content">
-      <div id="poem1" class="poem">
-        <h2>The Whispering Wind</h2>
-        <p><em>June 29, 2025</em></p>
-        <p>The wind whispered secrets through the trees,<br> Of quiet hopes and midnight dreams...</p>
-      </div>
-
-      <div id="poem2" class="poem">
-        <h2>Stardust</h2>
-        <p><em>June 28, 2025</em></p>
-        <p>We are made of stardust, they say,<br> Tiny sparks lighting up the day...</p>
-      </div>
-    </div>
+    <div class="content" id="poemContainer"></div>
   </div>
 
   <footer>
@@ -236,13 +226,40 @@
   </footer>
 
   <script>
+    let poemsData = [];
+
     function showPoem(id) {
-      const poems = document.querySelectorAll('.poem');
-      poems.forEach(poem => poem.classList.remove('active'));
-      const selected = document.getElementById(id);
-      if (selected) selected.classList.add('active');
+      const container = document.getElementById('poemContainer');
+      const poem = poemsData.find(p => p.id === id);
+      if (poem) {
+        container.innerHTML = `
+          <div class="poem active">
+            <h2>${poem.title}</h2>
+            <p><em>${poem.date}</em></p>
+            <p class="${poem.language === 'marathi' ? 'marathi' : ''}">${poem.content}</p>
+          </div>
+        `;
+      }
       const sidebar = document.getElementById('sidebar');
       if (sidebar) sidebar.classList.remove('active');
+    }
+
+    function loadPoems() {
+      fetch('poems.json')
+        .then(res => res.json())
+        .then(data => {
+          poemsData = data;
+          const list = document.getElementById('poemList');
+          list.innerHTML = '';
+
+          data.forEach(poem => {
+            const li = document.createElement('li');
+            li.innerHTML = `<a href="#" onclick="showPoem('${poem.id}')">${poem.title}</a>`;
+            list.appendChild(li);
+          });
+
+          if (data.length > 0) showPoem(data[0].id);
+        });
     }
 
     function toggleDarkMode() {
@@ -256,16 +273,16 @@
 
     function filterPoems() {
       const input = document.getElementById('searchInput').value.toLowerCase();
-      const listItems = document.querySelectorAll('#poemList li');
-      listItems.forEach(item => {
-        const text = item.textContent.toLowerCase();
-        item.style.display = text.includes(input) ? '' : 'none';
+      const links = document.querySelectorAll('#poemList li');
+      links.forEach(link => {
+        const text = link.textContent.toLowerCase();
+        link.style.display = text.includes(input) ? '' : 'none';
       });
     }
 
     window.onload = () => {
-      showPoem('poem1');
-    }
+      loadPoems();
+    };
   </script>
 </body>
 </html>
