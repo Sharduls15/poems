@@ -14,7 +14,7 @@
 body.dark-mode {
   --bg-color: #121212;
   --bg-gradient: linear-gradient(to right, #1e1e1e, #121212);
-  --text-color: #e0e0e0;
+  --text-color: #0a0a0a;
   --accent-color: #ffccbc;
   --highlight-color: #ffab91;
   --header-bg: #1f1f1f;
