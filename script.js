@@ -16,17 +16,17 @@ const poemsData = [
   },
   {
     id: "poem3",
-    title: "संध्याकाळ",
-    date: "इथे प्रस्तावना लिहू शकतो",
+    title: "",
+    date: "",
     language: "marathi",
-    content: "आभाळ रंगले तांबूस,<br>मन झाले शांत, संथ, गंभीर..."
+    content: ""
   },
   {
     id: "poem4",
-    title: "Stardust",
-    date: "June 28, 2025",
-    language: "english",
-    content: "We are made of stardust, they say,<br>Tiny sparks lighting up the day..."
+    title: "",
+    date: "",
+    language: "",
+    content: ""
   }
 ];
 
