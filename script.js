@@ -1,10 +1,10 @@
 const poemsData = [
   {
     id: "poem1",
-    title: "The Whispering Wind",
-    date: "June 29, 2025",
-    language: "english",
-    content: "The wind whispered secrets through the trees,<br>Of quiet hopes and midnight dreams..."
+    title: "ऋणानुबंध",
+    date: "",
+    language: "marathi",
+    content: "अर्चना ही अर्पितो मी<br>एक जगदोद्धारणे - <br>भेटले वाटेवरी जे,<br>सर्व ते स्वीकारणे"
   },
   {
     id: "poem2",
