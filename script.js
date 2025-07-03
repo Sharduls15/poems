@@ -16,10 +16,10 @@ const poemsData = [
   },
   {
     id: "poem3",
-    title: "",
+    title: "abc",
     date: "",
-    language: "marathi",
-    content: ""
+    language: "english",
+    content: "abc abc abc"
   },
   {
     id: "poem4",
